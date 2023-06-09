@@ -31,7 +31,7 @@
     </div>
     <div class="flex-none">
       <a
-        href="https://makinteract.kaist.ac.kr"
+        href="https://github.com/makinteract/twin-view"
         class="btn btn-square btn-ghost mr-4">
         <Icon data={github} scale="2" />
       </a>
