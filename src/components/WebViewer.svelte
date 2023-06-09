@@ -12,19 +12,23 @@
       {
         licenseKey: 'Assup6XVHI6Up4VMA6Zf',
         path: '/lib',
-        disabledElements: ['zoomOutButton', 'viewControlsOverlay'],
+        disabledElements: ['viewControlsOverlay'],
       },
       view
     ).then((instance) => {
       // Config interface
       instance.UI.loadDocument(file, { filename: file.name });
       instance.UI.setTheme('dark');
-      instance.UI.disableElements(['leftPanel', 'leftPanelButton']);
       instance.UI.disableElements([
+        // 'leftPanel',
+        // 'leftPanelButton',
         'panToolButton',
         'selectToolButton',
         'viewControlsButton',
+        'annotationPopup',
+        'contextMenuPopup',
       ]);
+      // instance.UI.enableElements(['zoomOutButton']);
 
       // Viewer
       const { documentViewer } = instance.Core;

@@ -5,8 +5,10 @@
   import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
   import { Pane, Splitpanes } from 'svelte-splitpanes';
   import Navi from './components/Navi.svelte';
+  import Alert from './components/Alert.svelte';
 
-  let file = undefined;
+  let selectedFile = undefined;
+  let wrongFileInput = false;
 
   let files = {
     accepted: [],
@@ -17,15 +19,23 @@
     const { acceptedFiles, fileRejections } = e.detail;
     files.accepted = [...files.accepted, ...acceptedFiles];
     files.rejected = [...files.rejected, ...fileRejections];
-    file = files.accepted[0] || undefined; // get the first file
+    selectedFile = files.accepted[0] || undefined; // get the first file
+    wrongFileInput = files.rejected.length > 0;
     // console.log(file);
+    // console.log(files);
   }
 </script>
 
+<!-- Alert -->
+{#if wrongFileInput}
+  <Alert show="true">Invalid file. Choose a PDF or an image file!</Alert>
+{/if}
+
+<!-- Main -->
 <div class="bg-base-200 min-h-screen flex flex-col overflow-hidden">
   <Navi />
 
-  {#if !file}
+  {#if !selectedFile}
     <div class="hero grow">
       <div class="hero-content text-center">
         <div class="max-w-md">
@@ -49,7 +59,7 @@
       {#each { length: 2 } as _, i}
         <Pane minSize={10}>
           <div class="h-[calc(100vh-3rem)]">
-            <WebViewer {file} />
+            <WebViewer file={selectedFile} />
           </div>
         </Pane>
       {/each}
