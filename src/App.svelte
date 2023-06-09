@@ -1,11 +1,10 @@
 <script>
   import Icon from 'svelte-awesome';
-  import github from 'svelte-awesome/icons/github';
   import cloud from 'svelte-awesome/icons/cloudUpload';
-  import logo from './assets/logo.jpeg';
   import WebViewer from './components/WebViewer.svelte';
   import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
   import { Pane, Splitpanes } from 'svelte-splitpanes';
+  import Navi from './components/Navi.svelte';
 
   let file = undefined;
 
@@ -24,19 +23,7 @@
 </script>
 
 <div class="bg-base-200 min-h-screen flex flex-col overflow-hidden">
-  <div class="navbar h-24 bg-base-100 flex-none p-0">
-    <div class="flex-1">
-      <img class="w-24 h-24" src={logo} alt="" />
-      <a href="./" class="btn btn-ghost normal-case text-xl">Twin View</a>
-    </div>
-    <div class="flex-none">
-      <a
-        href="https://github.com/makinteract/twin-view"
-        class="btn btn-square btn-ghost mr-4">
-        <Icon data={github} scale="2" />
-      </a>
-    </div>
-  </div>
+  <Navi />
 
   {#if !file}
     <div class="hero grow">
@@ -45,7 +32,7 @@
           <Dropzone
             on:drop={handleFilesSelect}
             disableDefaultStyles
-            multiple="false,"
+            multiple={false}
             accept={['image/*', 'application/pdf']}
             containerClasses="custom-dropzone">
             <div>
@@ -61,7 +48,7 @@
     <Splitpanes class="grow">
       {#each { length: 2 } as _, i}
         <Pane minSize={10}>
-          <div class="h-[calc(100vh-8rem)]">
+          <div class="h-[calc(100vh-3rem)]">
             <WebViewer {file} />
           </div>
         </Pane>
