@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run postinstall",
+    "serve": "vite preview",
+    "postinstall": "node tools/copy-webviewer-files.cjs",
+    "deploy": "npx surge public --domain twinview.surge.sh"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.4",
+    "autoprefixer": "^10.4.2",
+    "daisyui": "^2.51.5",
+    "postcss": "^8.4.21",
+    "surge": "^0.23.1",
+    "svelte": "^3.58.0",
+    "tailwindcss": "^3.3.1",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "@pdftron/pdfjs-express-viewer": "^8.7.3",
+    "fs-extra": "^11.1.1",
+    "svelte-awesome": "^3.2.0",
+    "svelte-file-dropzone": "^2.0.1",
+    "svelte-splitpanes": "^0.7.14",
+    "vite-plugin-commonjs": "^0.7.1"
+  }
+}
