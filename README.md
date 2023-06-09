@@ -1,5 +1,26 @@
-# Twin View
+# Twin View - double the views for the same PDF
 
-Online viewer for PDF
+Online PDF reader that shows _two independent views for the same file_. This allows one to easily navigate a file and use the other as a reference. The reader supports PDFs and images.
 
-![](.github/screenshot.png)
+[Demo website](http://twinview.surge.sh)
+
+![](.github/screenshot_upload.png)
+
+![](.github/screenshot_views.png)
+
+## Credits
+
+- [Svelte](https://svelte.dev)
+- [pdfjs.express](https://pdfjs.express)
+- [Svelte-Splitpane](https://orefalo.github.io/svelte-splitpanes/)
+- [svelte-file-dropzone](https://www.npmjs.com/package/svelte-file-dropzone)
+- [daisyUI](https://daisyui.com)
+- [Fontawesome](https://fontawesome.com/v4/icons/)
+
+## Author
+
+[MAKinteract](https://makinteract.kaist.ac.kr)
+
+## License
+
+MIT

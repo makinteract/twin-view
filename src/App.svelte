@@ -6,9 +6,11 @@
   import { Pane, Splitpanes } from 'svelte-splitpanes';
   import Navi from './components/Navi.svelte';
   import Alert from './components/Alert.svelte';
+  import SideMenu from './components/SideMenu.svelte';
 
   let selectedFile = undefined;
   let wrongFileInput = false;
+  let ratio = 50;
 
   let files = {
     accepted: [],
@@ -17,12 +19,27 @@
 
   function handleFilesSelect(e) {
     const { acceptedFiles, fileRejections } = e.detail;
-    files.accepted = [...files.accepted, ...acceptedFiles];
-    files.rejected = [...files.rejected, ...fileRejections];
+    files.accepted = [...acceptedFiles];
+    files.rejected = [...fileRejections];
     selectedFile = files.accepted[0] || undefined; // get the first file
     wrongFileInput = files.rejected.length > 0;
+    if (wrongFileInput) {
+      setTimeout(() => {
+        wrongFileInput = false;
+      }, 2000);
+    }
     // console.log(file);
     // console.log(files);
+  }
+
+  function resetFile() {
+    selectedFile = undefined;
+  }
+  function resetPanes() {
+    ratio = 50;
+  }
+  function minimizePane() {
+    ratio = 80;
   }
 </script>
 
@@ -55,15 +72,27 @@
       </div>
     </div>
   {:else}
-    <Splitpanes class="grow">
-      {#each { length: 2 } as _, i}
+    <div class="flex">
+      <SideMenu
+        on:clickHome={resetFile}
+        on:clickReset={resetPanes}
+        on:clickMinimize={minimizePane} />
+
+      <Splitpanes class="grow">
+        <!-- {#each { length: 2 } as _, i} -->
+        <Pane minSize={10} bind:size={ratio}>
+          <div class="h-[calc(100vh-3rem)]">
+            <WebViewer file={selectedFile} />
+          </div>
+        </Pane>
         <Pane minSize={10}>
           <div class="h-[calc(100vh-3rem)]">
             <WebViewer file={selectedFile} />
           </div>
         </Pane>
-      {/each}
-    </Splitpanes>
+        <!-- {/each} -->
+      </Splitpanes>
+    </div>
   {/if}
 </div>
 
