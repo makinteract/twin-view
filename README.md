@@ -2,7 +2,11 @@
 
 Online PDF reader that shows _two independent views for the same file_. This allows one to easily navigate a file and use the other as a reference. The reader supports PDFs and images.
 
-[Demo website](http://twinview.surge.sh)
+[TwinView website (demo)](http://twinview.surge.sh)
+
+[![](.github/twinview.gif)](https://youtu.be/seFlsQx3c54)
+
+## Screenshots
 
 ![](.github/screenshot_upload.png)
 
