@@ -25,8 +25,6 @@ Online PDF reader that shows _two independent views for the same file_. This all
 
 [MAKinteract](https://makinteract.kaist.ac.kr)
 
-<a href="https://www.buymeacoffee.com/andreaHCI" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 108px !important;" ></a>
-
 ## License
 
 MIT
